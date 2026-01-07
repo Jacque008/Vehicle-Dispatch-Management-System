@@ -1,0 +1,35 @@
+{
+  "name": "vehicle-dispatch",
+  "version": "1.0.0",
+  "description": "Driver dispatch and qualification system",
+  "private": true,
+  "workspaces": [
+    "backend",
+    "web",
+    "mobile",
+    "shared"
+  ],
+  "scripts": {
+    "dev:backend": "npm run dev --workspace=backend",
+    "dev:web": "npm run dev --workspace=web",
+    "dev:mobile": "npm run start --workspace=mobile",
+    "build:all": "npm run build --workspaces",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "docker:logs": "docker-compose logs -f"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "keywords": [
+    "dispatch",
+    "driver-management",
+    "typescript",
+    "nestjs",
+    "nextjs",
+    "react-native"
+  ],
+  "author": "",
+  "license": "MIT"
+}
