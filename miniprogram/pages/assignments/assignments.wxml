@@ -1,0 +1,72 @@
+<!--pages/assignments/assignments.wxml-->
+<view class="container">
+  <view class="tabs">
+    <view
+      class="tab {{activeTab === 'available' ? 'tab-active' : ''}}"
+      bindtap="switchTab"
+      data-tab="available"
+    >
+      Available
+    </view>
+    <view
+      class="tab {{activeTab === 'mine' ? 'tab-active' : ''}}"
+      bindtap="switchTab"
+      data-tab="mine"
+    >
+      My Assignments
+    </view>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">
+    <text>Loading assignments...</text>
+  </view>
+
+  <view wx:elif="{{assignments.length === 0}}" class="empty-state">
+    <text class="empty-text">No assignments found</text>
+  </view>
+
+  <view wx:else class="assignments-list">
+    <view
+      class="assignment-card"
+      wx:for="{{assignments}}"
+      wx:key="id"
+    >
+      <view class="assignment-header">
+        <text class="assignment-title">{{item.title}}</text>
+        <view class="status-badge status-{{item.status}}">{{item.status}}</view>
+      </view>
+
+      <text class="assignment-description" wx:if="{{item.description}}">
+        {{item.description}}
+      </text>
+
+      <view class="assignment-info">
+        <view class="info-row">
+          <text class="info-label">Start:</text>
+          <text class="info-value">{{item.startTimeFormatted}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">End:</text>
+          <text class="info-value">{{item.endTimeFormatted}}</text>
+        </view>
+      </view>
+
+      <view class="assignment-actions" wx:if="{{activeTab === 'available'}}">
+        <button
+          class="btn-accept"
+          bindtap="handleAccept"
+          data-id="{{item.id}}"
+        >
+          Accept
+        </button>
+        <button
+          class="btn-decline"
+          bindtap="handleDecline"
+          data-id="{{item.id}}"
+        >
+          Decline
+        </button>
+      </view>
+    </view>
+  </view>
+</view>

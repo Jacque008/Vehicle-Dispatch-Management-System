@@ -1,0 +1,84 @@
+<!--pages/home/home.wxml-->
+<view class="container">
+  <view class="welcome-section">
+    <text class="welcome-title">Welcome Back</text>
+    <text class="welcome-subtitle">{{driverName || 'Driver'}}</text>
+    <view class="status-badge status-{{driverStatus}}">
+      {{driverStatus || 'Loading...'}}
+    </view>
+  </view>
+
+  <!-- Available Assignments -->
+  <view class="section">
+    <text class="section-title">Available Assignments</text>
+
+    <view wx:if="{{loading}}" class="loading">
+      <text>Loading assignments...</text>
+    </view>
+
+    <view wx:elif="{{availableAssignments.length === 0}}" class="empty-state">
+      <text class="empty-text">No available assignments</text>
+    </view>
+
+    <view wx:else>
+      <view
+        class="assignment-card"
+        wx:for="{{availableAssignments}}"
+        wx:key="id"
+        bindtap="onAssignmentTap"
+        data-id="{{item.id}}"
+      >
+        <view class="assignment-header">
+          <text class="assignment-title">{{item.title}}</text>
+          <view class="status-badge status-{{item.status}}">{{item.status}}</view>
+        </view>
+
+        <text class="assignment-description" wx:if="{{item.description}}">
+          {{item.description}}
+        </text>
+
+        <view class="assignment-time">
+          <text class="time-label">Start:</text>
+          <text class="time-value">{{item.startTimeFormatted}}</text>
+        </view>
+
+        <view class="assignment-time">
+          <text class="time-label">End:</text>
+          <text class="time-value">{{item.endTimeFormatted}}</text>
+        </view>
+
+        <view class="assignment-actions">
+          <button
+            class="btn-accept"
+            bindtap="handleAccept"
+            data-id="{{item.id}}"
+            catchtap="handleAccept"
+          >
+            Accept
+          </button>
+          <button
+            class="btn-decline"
+            bindtap="handleDecline"
+            data-id="{{item.id}}"
+            catchtap="handleDecline"
+          >
+            Decline
+          </button>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- Quick Actions -->
+  <view class="section">
+    <text class="section-title">Quick Actions</text>
+    <view class="action-buttons">
+      <button class="action-btn" bindtap="goToAssignments">
+        View All Assignments
+      </button>
+      <button class="action-btn" bindtap="goToHistory">
+        View History
+      </button>
+    </view>
+  </view>
+</view>

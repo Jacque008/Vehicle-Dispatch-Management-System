@@ -1,0 +1,17 @@
+/* pages/login/login.wxss */
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32rpx;
+}
+
+.login-content {
+  width: 100%;
+  max-width: 600rpx;
+}
+
+.form-group {
+  margin-bottom: 32rpx;
+}

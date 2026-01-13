@@ -1,0 +1,52 @@
+<!--pages/history/history.wxml-->
+<view class="container">
+  <view class="header">
+    <text class="page-title">Assignment History</text>
+  </view>
+
+  <view wx:if="{{loading}}" class="loading">
+    <text>Loading history...</text>
+  </view>
+
+  <view wx:elif="{{history.length === 0}}" class="empty-state">
+    <text class="empty-text">No assignment history yet</text>
+  </view>
+
+  <view wx:else class="history-list">
+    <view
+      class="history-card"
+      wx:for="{{history}}"
+      wx:key="id"
+    >
+      <view class="card-header">
+        <text class="card-title">{{item.title}}</text>
+        <view class="status-badge status-{{item.status}}">{{item.status}}</view>
+      </view>
+
+      <text class="card-description" wx:if="{{item.description}}">
+        {{item.description}}
+      </text>
+
+      <view class="card-info">
+        <view class="info-row">
+          <text class="info-label">Date:</text>
+          <text class="info-value">{{item.startTimeFormatted}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-label">Duration:</text>
+          <text class="info-value">{{item.duration}}</text>
+        </view>
+        <view class="info-row" wx:if="{{item.response}}">
+          <text class="info-label">Response:</text>
+          <view class="response-badge response-{{item.response}}">
+            {{item.response}}
+          </view>
+        </view>
+        <view class="info-row" wx:if="{{item.completedAt}}">
+          <text class="info-label">Completed:</text>
+          <text class="info-value">{{item.completedAtFormatted}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+{
+  "desc": "Configuration for WeChat search indexing",
+  "rules": [{
+    "action": "allow",
+    "page": "*"
+  }]
+}

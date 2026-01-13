@@ -1,0 +1,77 @@
+<!--pages/profile/profile.wxml-->
+<view class="container">
+  <!-- Profile Header -->
+  <view class="profile-header">
+    <view class="avatar">
+      <text class="avatar-text">{{avatarLetter}}</text>
+    </view>
+    <text class="profile-name">{{profile.name || 'Loading...'}}</text>
+    <view class="status-badge status-{{profile.status}}">
+      {{profile.status || 'Unknown'}}
+    </view>
+  </view>
+
+  <!-- Profile Details -->
+  <view class="section">
+    <text class="section-title">Personal Information</text>
+    <view class="info-card">
+      <view class="info-item">
+        <text class="info-label">Email</text>
+        <text class="info-value">{{profile.email || 'N/A'}}</text>
+      </view>
+      <view class="info-item">
+        <text class="info-label">Phone</text>
+        <text class="info-value">{{profile.phone || 'N/A'}}</text>
+      </view>
+      <view class="info-item" wx:if="{{profile.licenseNumber}}">
+        <text class="info-label">License Number</text>
+        <text class="info-value">{{profile.licenseNumber}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Account Stats -->
+  <view class="section">
+    <text class="section-title">Statistics</text>
+    <view class="stats-grid">
+      <view class="stat-item">
+        <text class="stat-value">{{stats.totalAssignments}}</text>
+        <text class="stat-label">Total Assignments</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{stats.completedAssignments}}</text>
+        <text class="stat-label">Completed</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-value">{{stats.acceptanceRate}}%</text>
+        <text class="stat-label">Acceptance Rate</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- Actions -->
+  <view class="section">
+    <text class="section-title">Settings</text>
+    <view class="actions-card">
+      <button class="action-item" bindtap="handleEditProfile">
+        <text class="action-text">Edit Profile</text>
+        <text class="action-arrow">›</text>
+      </button>
+      <button class="action-item" bindtap="handleManageAvailability">
+        <text class="action-text">Manage Availability</text>
+        <text class="action-arrow">›</text>
+      </button>
+      <button class="action-item" bindtap="handleNotificationSettings">
+        <text class="action-text">Notification Settings</text>
+        <text class="action-arrow">›</text>
+      </button>
+    </view>
+  </view>
+
+  <!-- Logout -->
+  <view class="section">
+    <button class="logout-button" bindtap="handleLogout">
+      Logout
+    </button>
+  </view>
+</view>

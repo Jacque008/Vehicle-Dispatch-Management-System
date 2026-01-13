@@ -1,0 +1,12 @@
+# WeChat DevTools
+.DS_Store
+project.private.config.json
+
+# Build outputs
+miniprogram_npm/
+
+# User-specific files
+*.log
+
+# Temporary files
+.tmp/

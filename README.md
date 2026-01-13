@@ -9,6 +9,7 @@ vehicle-dispatch/
 ├── backend/          # NestJS API with GraphQL
 ├── web/              # Next.js manager portal
 ├── mobile/           # React Native (Expo) driver app
+├── miniprogram/      # WeChat Mini Program driver app
 ├── shared/           # Shared TypeScript types
 └── docker-compose.yml
 ```
@@ -18,6 +19,7 @@ vehicle-dispatch/
 - **Backend**: NestJS + Prisma + GraphQL + PostgreSQL + Redis
 - **Web**: Next.js 14 + shadcn/ui + TailwindCSS
 - **Mobile**: React Native + Expo
+- **Mini Program**: WeChat Mini Program Native (for European WeChat users)
 - **Auth**: JWT for managers, Email OTP for drivers
 - **Deployment**: Railway
 
@@ -28,6 +30,7 @@ vehicle-dispatch/
 - Node.js >= 18
 - Docker & Docker Compose
 - Expo CLI (for mobile development)
+- WeChat DevTools (for Mini Program development)
 
 ### Installation
 
@@ -58,12 +61,17 @@ Run all services in separate terminals:
 # Terminal 1: Backend API
 npm run dev:backend
 
-# Terminal 2: Web portal
+# Terminal 2: Web portal (Manager dashboard)
 npm run dev:web
 
-# Terminal 3: Mobile app
+# Terminal 3: Mobile app (React Native driver app)
 npm run dev:mobile
+
+# Terminal 4: Mini Program (WeChat driver app)
+# Open miniprogram/ in WeChat DevTools
 ```
+
+See [miniprogram/README.md](./miniprogram/README.md) for WeChat Mini Program setup instructions.
 
 ## Features
 
